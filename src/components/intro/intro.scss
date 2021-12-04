@@ -17,7 +17,7 @@
       background-color: rgb(255, 24, 70);
       display: flex;
       justify-content: center;
-      align-items: flex-end;
+      align-items: flex-start;
       float: right;
       @include mobile{
         align-items: flex-start;

@@ -17,14 +17,16 @@
     list-style: none;
     display: flex;
     @include mobile{
+      display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
       margin: 10px 0;
     }
 
     li {
       font-size: 14px;
-      margin-right: 50px;
+      margin: 0 25px;
       padding: 7px;
       border-radius: 10px;
       cursor: pointer;
@@ -59,8 +61,8 @@
       transition: all 0.5s ease;
       cursor: pointer;
       @include mobile{
-        width: 100px;
-        height: 80px;
+        width: 120px;
+        height: 100px;
 
       }
 
