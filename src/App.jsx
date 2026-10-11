@@ -1,26 +1,31 @@
-import TopBar from "./components/topbar/TopBar";
-import Intro from "./components/intro/Intro";
-import Protofolio from "./components/protofolio/Protofolio";
-import Works from "./components/work/Work";
-import Testimonials from "./components/testimonials/Testimonials";
-import Contact from "./components/contact/Contact";
-import "./app.scss";
-import { useState } from "react";
-import Menu from "./components/menu/Menu";
+import Background from "./components/Background";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import AiWorkflow from "./components/AiWorkflow";
+import TechStack from "./components/TechStack";
+import Experience from "./components/Experience";
+import Projects from "./components/Projects";
+import GithubStats from "./components/GithubStats";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false)
   return (
-    <div className="app">
-      <TopBar   menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-      <Menu    menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-      <div className="sections">
-        <Intro />
-        <Protofolio />
-        <Works />
-        <Testimonials />
+    <div className="relative min-h-screen overflow-x-hidden">
+      <Background />
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <AiWorkflow />
+        <TechStack />
+        <Experience />
+        <Projects />
+        <GithubStats />
         <Contact />
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 }
