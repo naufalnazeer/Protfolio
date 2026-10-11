@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FiMail, FiPhone, FiGithub, FiLinkedin, FiCheckCircle } from "react-icons/fi";
+import { FiMail, FiPhone, FiGithub, FiLinkedin } from "react-icons/fi";
 import { profile, freelanceServices } from "../data";
+import SectionLabel from "./SectionLabel";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -17,59 +18,70 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative px-6 py-28">
+    <section id="contact" className="relative px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-2xl text-center"
-        >
-          <p className="text-sm font-semibold uppercase tracking-widest text-fuchsia-400">
-            Let's Work Together
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-            Open for <span className="text-gradient">freelance & contract</span> work
-          </h2>
-        </motion.div>
+        <SectionLabel index="07" title="Contact" />
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-2">
+        <div className="relative">
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="font-display text-3xl font-bold text-white sm:text-4xl"
+          >
+            Open for <span className="text-sky-400">freelance &amp; contract</span> work
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, rotate: -6 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: -6 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="absolute -right-2 top-0 hidden h-20 w-20 items-center justify-center rounded-full border-2 border-dashed border-sky-400/70 text-center font-mono text-[9px] font-semibold uppercase leading-tight tracking-wider text-sky-400 sm:flex"
+          >
+            Available
+            <br />
+            for hire
+          </motion.div>
+        </div>
+
+        <div className="mt-12 grid gap-10 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            <ul className="space-y-4">
-              {freelanceServices.map((item) => (
-                <li key={item.slice(0, 24)} className="flex gap-3">
-                  <FiCheckCircle className="mt-1 shrink-0 text-fuchsia-400" />
-                  <span className="text-sm leading-relaxed text-slate-400">
-                    {item}
+            <ul className="space-y-5">
+              {freelanceServices.map((item, i) => (
+                <li key={item.slice(0, 24)} className="flex gap-4">
+                  <span className="font-mono text-xs text-slate-600">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
+                  <span className="text-sm leading-relaxed text-slate-400">{item}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-8 space-y-3">
+            <div className="mt-10 space-y-3 border-t border-white/10 pt-6 font-mono text-sm">
               <a
                 href={`mailto:${profile.email}`}
-                className="flex items-center gap-3 text-sm text-slate-300 transition-colors hover:text-white"
+                className="flex items-center gap-3 text-slate-300 transition-colors hover:text-sky-400"
               >
-                <FiMail className="text-fuchsia-400" /> {profile.email}
+                <FiMail className="text-sky-400" /> {profile.email}
               </a>
               <a
                 href={`tel:${profile.phone.replace(/\s/g, "")}`}
-                className="flex items-center gap-3 text-sm text-slate-300 transition-colors hover:text-white"
+                className="flex items-center gap-3 text-slate-300 transition-colors hover:text-sky-400"
               >
-                <FiPhone className="text-fuchsia-400" /> {profile.phone}
+                <FiPhone className="text-sky-400" /> {profile.phone}
               </a>
-              <div className="flex items-center gap-4 pt-2 text-xl text-slate-400">
-                <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="transition-colors hover:text-white">
+              <div className="flex items-center gap-4 pt-2 text-xl text-slate-500">
+                <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="transition-colors hover:text-sky-400">
                   <FiGithub />
                 </a>
-                <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-white">
+                <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-sky-400">
                   <FiLinkedin />
                 </a>
               </div>
@@ -82,43 +94,49 @@ export default function Contact() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
             onSubmit={handleSubmit}
-            className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
+            className="space-y-4 border border-white/10 p-8"
           >
-            <input
-              type="text"
-              name="name"
-              required
-              placeholder="Your name"
-              value={form.name}
-              onChange={handleChange}
-              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-fuchsia-400 focus:outline-none"
-            />
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Your email"
-              value={form.email}
-              onChange={handleChange}
-              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-fuchsia-400 focus:outline-none"
-            />
-            <textarea
-              name="message"
-              required
-              rows={4}
-              placeholder="Tell me about your project"
-              value={form.message}
-              onChange={handleChange}
-              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-fuchsia-400 focus:outline-none"
-            />
+            <div>
+              <label className="font-mono text-[10px] tracking-widest text-slate-500">NAME</label>
+              <input
+                type="text"
+                name="name"
+                required
+                value={form.name}
+                onChange={handleChange}
+                className="mt-1 w-full border border-white/15 bg-transparent px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="font-mono text-[10px] tracking-widest text-slate-500">EMAIL</label>
+              <input
+                type="email"
+                name="email"
+                required
+                value={form.email}
+                onChange={handleChange}
+                className="mt-1 w-full border border-white/15 bg-transparent px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="font-mono text-[10px] tracking-widest text-slate-500">MESSAGE</label>
+              <textarea
+                name="message"
+                required
+                rows={4}
+                value={form.message}
+                onChange={handleChange}
+                className="mt-1 w-full border border-white/15 bg-transparent px-4 py-3 text-sm text-white focus:border-sky-400 focus:outline-none"
+              />
+            </div>
             <button
               type="submit"
-              className="w-full rounded-full bg-gradient-to-r from-violet-500 via-fuchsia-500 to-amber-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/30 transition-transform hover:scale-[1.02]"
+              className="w-full border border-sky-400 bg-sky-400 px-6 py-3 font-mono text-xs tracking-widest text-[#0A1420] transition-colors hover:bg-transparent hover:text-sky-400"
             >
-              Send Message
+              SEND MESSAGE
             </button>
-            <p className="text-center text-xs text-slate-500">
-              Opens your email client addressed to {profile.email}
+            <p className="text-center font-mono text-[10px] tracking-widest text-slate-600">
+              OPENS YOUR EMAIL CLIENT
             </p>
           </motion.form>
         </div>

@@ -1,34 +1,32 @@
 import { motion } from "framer-motion";
 import { FiCpu, FiTool, FiGitMerge, FiRefreshCw } from "react-icons/fi";
 import { aiWorkflow } from "../data";
+import SectionLabel from "./SectionLabel";
+import TickedPanel from "./TickedPanel";
 
 const icons = [FiCpu, FiTool, FiGitMerge, FiRefreshCw];
 
 export default function AiWorkflow() {
   return (
-    <section
-      id="ai-workflow"
-      className="relative px-6 py-28"
-    >
+    <section id="ai-workflow" className="relative px-6 py-24">
       <div className="mx-auto max-w-6xl">
+        <SectionLabel index="02" title="AI-Augmented Engineering" />
+
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="mx-auto max-w-3xl text-center"
+          className="max-w-3xl"
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-fuchsia-400">
-            AI-Augmented Engineering
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-            AI agents as a <span className="text-gradient">force multiplier</span>,
-            not a shortcut.
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
+            AI agents as a <span className="text-sky-400">force multiplier</span>, not a
+            shortcut.
           </h2>
           <p className="mt-5 leading-relaxed text-slate-400">{aiWorkflow.intro}</p>
         </motion.div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2">
           {aiWorkflow.points.map((point, i) => {
             const Icon = icons[i % icons.length];
             return (
@@ -38,34 +36,39 @@ export default function AiWorkflow() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm transition-colors hover:border-fuchsia-400/40"
               >
-                <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br from-violet-500/30 to-amber-400/20 blur-2xl transition-opacity group-hover:opacity-100" />
-                <div className="relative">
-                  <div className="inline-flex rounded-2xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-400 p-3 text-xl text-white">
-                    <Icon />
+                <TickedPanel className="h-full p-7 transition-colors hover:border-sky-400/40">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-sky-400/40 text-base text-sky-400">
+                      <Icon />
+                    </span>
+                    <span className="font-mono text-[10px] tracking-widest text-slate-600">
+                      MODULE {String(i + 1).padStart(2, "0")}
+                    </span>
                   </div>
-                  <h3 className="mt-5 font-display text-lg font-semibold text-white">
+                  <h3 className="mt-4 font-display text-lg font-semibold text-white">
                     {point.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-slate-400">
                     {point.description}
                   </p>
-                </div>
+                </TickedPanel>
               </motion.div>
             );
           })}
         </div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mx-auto mt-14 max-w-3xl text-center text-lg font-medium italic text-slate-300"
+          className="mx-auto mt-12 max-w-3xl border-l-2 border-sky-400 pl-5"
         >
-          "{aiWorkflow.closing}"
-        </motion.p>
+          <p className="font-mono text-sm italic leading-relaxed text-slate-300">
+            &ldquo;{aiWorkflow.closing}&rdquo;
+          </p>
+        </motion.div>
       </div>
     </section>
   );

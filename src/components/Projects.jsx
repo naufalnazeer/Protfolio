@@ -1,35 +1,25 @@
 import { motion } from "framer-motion";
 import { projects } from "../data";
-
-const gradients = [
-  "from-violet-500 via-fuchsia-500 to-amber-400",
-  "from-cyan-400 via-violet-500 to-fuchsia-500",
-  "from-amber-400 via-rose-500 to-violet-500",
-  "from-fuchsia-500 via-violet-500 to-cyan-400",
-  "from-rose-500 via-amber-400 to-fuchsia-500",
-  "from-violet-500 via-cyan-400 to-amber-400",
-];
+import SectionLabel from "./SectionLabel";
+import TickedPanel from "./TickedPanel";
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative px-6 py-28">
+    <section id="projects" className="relative px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <motion.div
+        <SectionLabel index="05" title="Projects" />
+
+        <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="mx-auto max-w-2xl text-center"
+          className="font-display text-3xl font-bold text-white sm:text-4xl"
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-fuchsia-400">
-            Featured Projects
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-            Products I've <span className="text-gradient">helped ship</span>
-          </h2>
-        </motion.div>
+          Products I&apos;ve <span className="text-sky-400">helped ship</span>
+        </motion.h2>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
@@ -37,40 +27,36 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-              className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-transform hover:-translate-y-1"
             >
-              <div
-                className={`relative flex h-32 items-center justify-center bg-gradient-to-br ${gradients[i % gradients.length]}`}
-              >
-                <span className="font-display text-3xl font-bold text-white/90">
-                  {project.title
-                    .split(" ")
-                    .map((w) => w[0])
-                    .slice(0, 2)
-                    .join("")}
-                </span>
-              </div>
-              <div className="p-6">
-                <h3 className="font-display text-lg font-semibold text-white">
+              <TickedPanel className="flex h-full flex-col p-6 transition-colors hover:border-sky-400/40">
+                <div className="flex items-start justify-between">
+                  <span className="font-mono text-2xl font-bold text-slate-700">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-mono text-[10px] tracking-widest text-sky-400">
+                    PRJ-{String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="mt-4 font-display text-lg font-semibold text-white">
                   {project.title}
                 </h3>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-fuchsia-300">
-                  {project.org}
+                <p className="mt-1 font-mono text-[11px] tracking-wide text-slate-500">
+                  {project.org.toUpperCase()}
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">
                   {project.description}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2 border-t border-white/10 pt-4">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] font-medium text-slate-300"
+                      className="border border-white/10 px-2 py-1 font-mono text-[10px] text-slate-400"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-              </div>
+              </TickedPanel>
             </motion.div>
           ))}
         </div>

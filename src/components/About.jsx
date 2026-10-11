@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { FiCheckCircle } from "react-icons/fi";
 import { aboutParagraphs, qatarExperience } from "../data";
+import SectionLabel from "./SectionLabel";
+import TickedPanel from "./TickedPanel";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -9,25 +10,22 @@ const fadeUp = {
 
 export default function About() {
   return (
-    <section id="about" className="relative px-6 py-28">
+    <section id="about" className="relative px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <motion.div
+        <SectionLabel index="01" title="About" />
+
+        <motion.h2
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUp}
           transition={{ duration: 0.6 }}
+          className="font-display text-3xl font-bold text-white sm:text-4xl"
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-fuchsia-400">
-            About Me
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-            Enterprise-grade apps,{" "}
-            <span className="text-gradient">shipped on-site in Qatar.</span>
-          </h2>
-        </motion.div>
+          Enterprise-grade apps, <span className="text-sky-400">shipped on-site in Qatar.</span>
+        </motion.h2>
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-2">
+        <div className="mt-12 grid gap-10 lg:grid-cols-2">
           <motion.div
             initial="hidden"
             whileInView="show"
@@ -49,21 +47,22 @@ export default function About() {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
           >
-            <h3 className="font-display text-xl font-semibold text-white">
-              On-site Client Experience (Qatar)
-            </h3>
-            <ul className="mt-6 space-y-4">
-              {qatarExperience.map((item) => (
-                <li key={item.slice(0, 24)} className="flex gap-3">
-                  <FiCheckCircle className="mt-1 shrink-0 text-fuchsia-400" />
-                  <span className="text-sm leading-relaxed text-slate-400">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <TickedPanel className="p-8">
+              <h3 className="font-mono text-xs tracking-widest text-sky-400">
+                ON-SITE CLIENT EXPERIENCE — QATAR
+              </h3>
+              <ul className="mt-6 space-y-5">
+                {qatarExperience.map((item, i) => (
+                  <li key={item.slice(0, 24)} className="flex gap-4">
+                    <span className="font-mono text-xs text-slate-600">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-sm leading-relaxed text-slate-400">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </TickedPanel>
           </motion.div>
         </div>
       </div>
