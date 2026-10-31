@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FiArrowUpRight } from "react-icons/fi";
 import { projects } from "../data";
 import SectionLabel from "./SectionLabel";
 import TickedPanel from "./TickedPanel";
@@ -37,8 +38,19 @@ export default function Projects() {
                     PRJ-{String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="mt-4 font-display text-lg font-semibold text-white">
+                <h3 className="mt-4 flex items-center gap-1.5 font-display text-lg font-semibold text-white">
                   {project.title}
+                  {project.url && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Visit ${project.title}`}
+                      className="text-sky-400 transition-colors hover:text-sky-300"
+                    >
+                      <FiArrowUpRight />
+                    </a>
+                  )}
                 </h3>
                 <p className="mt-1 font-mono text-[11px] tracking-wide text-slate-500">
                   {project.org.toUpperCase()}

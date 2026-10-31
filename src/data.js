@@ -130,6 +130,14 @@ export const experienceHighlights = [
 
 export const projects = [
   {
+    title: "InviteAura",
+    org: "Independent Product",
+    description:
+      "Self-published digital wedding invitation product, built and run independently — couples pick from 79+ templates across styles like Floral, Royal, Minimalist, Kerala Traditional, Islamic, and Christian, personalize names, date, venue, wording and colors with a live preview, then get a shareable invitation webpage with a letter-opening animation and background music. Ordering and payment are handled over WhatsApp.",
+    tags: ["React", "Self-Published Product"],
+    url: "https://inviteaura.malabar-codeworks.com",
+  },
+  {
     title: "National Utility Digital Services Platform",
     org: "Applab, Qatar",
     description:
