@@ -6,7 +6,6 @@ import AiWorkflow from "./components/AiWorkflow";
 import TechStack from "./components/TechStack";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
-import GithubStats from "./components/GithubStats";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -22,7 +21,6 @@ function App() {
         <TechStack />
         <Experience />
         <Projects />
-        <GithubStats />
         <Contact />
       </main>
       <Footer />

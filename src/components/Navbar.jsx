@@ -10,7 +10,7 @@ const links = [
   { href: "#skills", label: "Stack", num: "03" },
   { href: "#experience", label: "Experience", num: "04" },
   { href: "#projects", label: "Projects", num: "05" },
-  { href: "#contact", label: "Contact", num: "07" },
+  { href: "#contact", label: "Contact", num: "06" },
 ];
 
 const HEADER_OFFSET = 88;

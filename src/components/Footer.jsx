@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="relative border-t border-white/10 px-6 py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 font-mono text-[11px] tracking-widest text-slate-600 sm:flex-row">
         <p>
-          SHEET 07/07 &middot; {profile.name.toUpperCase()}
+          SHEET 06/06 &middot; {profile.name.toUpperCase()}
         </p>
 
         <div className="flex items-center gap-5 text-base text-slate-500">

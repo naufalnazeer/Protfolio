@@ -20,7 +20,7 @@ export default function Contact() {
   return (
     <section id="contact" className="relative px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <SectionLabel index="07" title="Contact" />
+        <SectionLabel index="06" title="Contact" />
 
         <div className="relative">
           <motion.h2
